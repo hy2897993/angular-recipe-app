@@ -8,6 +8,6 @@ import { environment } from './../environments/environment'
 export class AppComponent {
 
   title = 'recipe-app';
-  private apiUrl = 'https://cors-anywhere.herokuapp.com/http://www.yingrecipedatabaseapi.xyz/api'
+  private apiUrl = 'http://www.yingrecipedatabaseapi.xyz/api'
 }
 

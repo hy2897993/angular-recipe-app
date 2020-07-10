@@ -27,7 +27,7 @@ export interface TokenPayload {
 @Injectable()
 export class AuthenticationService {
   private token: string
-  private apiUrl = 'https://cors-anywhere.herokuapp.com/http://www.yingrecipedatabaseapi.xyz/api'
+  private apiUrl = 'http://www.yingrecipedatabaseapi.xyz/api'
 
   constructor(private http: HttpClient, private router: Router) {}
 
