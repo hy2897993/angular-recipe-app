@@ -1,0 +1,24 @@
+<div class="all">
+    <div class="recipe"
+    [style.background-image]= "'url('+recipe.image+')'">
+      <div class="header" >
+        <b class="name" style="width: 60%;" (click) = 'chooseDishes(i)'>
+          {{recipe.label}}
+        </b>
+        <div style="display: flex; flex-direction: row; justify-content: flex-end; width: 30%;">
+          <div (click)='bookMarkRecipe()'>
+            <fa-icon [icon]='starIcon' style="color: black; margin: 10px; background-color: #ffffffab; padding: 10px 10.625px; border-radius: 18.5px;" ></fa-icon>
+          </div>
+        </div>
+      </div>
+  
+      <div class="labels">
+        <mat-chip-list class="mat-chip-list" aria-label="Labels">
+          <mat-chip class="mat-chip" size="small" *ngFor='let item of recipe.dietLabels' color="#ffffffab" selected>{{item}}</mat-chip>
+          <mat-chip class="mat-chip" *ngFor='let item of recipe.healthLabels' color="primary" style="background-color:#F5F5CD;color: black;" selected>{{item}}</mat-chip>
+        </mat-chip-list>
+      </div>
+  
+    </div>
+  </div>
+  

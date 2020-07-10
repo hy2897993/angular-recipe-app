@@ -1,0 +1,28 @@
+<header class="site-header">
+    <nav class="navbar navbar-expand-md navbar-light" style="background-color: #F5F5CD;">
+      <div class="container">
+        <a class="navbar-brand-lg" href="/home">RECIPE BOOK</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggle" aria-controls="navbarToggle" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarToggle">
+          <div class="navbar-nav mr-auto">
+            <a *ngIf="!auth.isLoggedIn()" class="nav-item nav-link" href="/home">Home</a>
+            <a *ngIf="auth.isLoggedIn()" class="nav-item nav-link" href="/user/:username">Home</a>
+            <a class="nav-item nav-link" href="/about">About</a>
+          </div>
+        <!-- Navbar Right Side -->
+        <div class="navbar-nav">
+<!--          logged in-->
+            <a *ngIf="auth.isLoggedIn()" class="nav-item nav-link" href="/account">Account</a>
+            <a *ngIf="auth.isLoggedIn()" class="nav-item nav-link" href="/" (click)="auth.logout()">Logout</a>
+<!--          not logged-->
+            <a *ngIf="!auth.isLoggedIn()" class="nav-item nav-link" href="/login">Login</a>
+            <a *ngIf="!auth.isLoggedIn()" class="nav-item nav-link" href="/register">Register</a>
+        </div>
+    </div>
+    </div>
+</nav>
+<!--<button (click)='go()'>Go check what it is all about</button>-->
+</header>
+

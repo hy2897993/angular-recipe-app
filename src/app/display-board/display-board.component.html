@@ -1,0 +1,88 @@
+
+<div *ngIf='status == 1 && statusCopy != 3' class="display-board-6" style="background-color: #636363;">
+    <mat-grid-list  cols='6' rowHeight="4:4">
+        <mat-grid-tile
+            class="recipeImage"
+            *ngFor = 'let item of recievedData; let i = index'>
+
+                <app-recipe-card
+                    style="width: 100%;height: 100%;"
+                    [recipe]=item.recipe
+                    [marked]=item.bookmarked
+                    [i] = i
+                    (sendIndex) = 'getDisplayIndex($event)'
+                    (sendStatus) = 'getSentStatus($event)'
+                    (sendAddedLiked) = 'getAddedLiked($event)'
+                ></app-recipe-card>
+
+        </mat-grid-tile>
+    </mat-grid-list>
+</div>
+
+<div *ngIf='status > 1 && statusCopy == 3' class="display-board-3" style="background-color: #636363;">
+    <mat-grid-list cols='3' rowHeight="4:4">
+        <mat-grid-tile
+            class="recipeImage"
+            *ngFor = 'let item of recievedData; let i = index'>
+
+                <app-recipe-card
+                    style="width: 100%;height: 100%;"
+                    [recipe]=item.recipe
+                    [marked]=item.bookmarked
+                    [i] = i
+                    (sendIndex) = 'getDisplayIndex($event)'
+                    (sendStatus) = 'getSentStatus($event)'
+                    (sendAddedLiked) = 'getAddedLiked($event)'
+
+                ></app-recipe-card>
+
+        </mat-grid-tile>
+    </mat-grid-list>
+</div>
+
+<div *ngIf='status > 1 && statusCopy !== 3' class="display-board-4" style="background-color: #636363;">
+    <mat-grid-list cols='4' rowHeight="4:4">
+        <mat-grid-tile
+            class="recipeImage"
+            *ngFor = 'let item of recievedData.slice(0, n); let i = index'>
+
+                <app-recipe-card
+                    style="width: 100%;height: 100%;"
+                    [recipe]=item.recipe
+                    [marked]=item.bookmarked
+                    [i] = i
+                    (sendIndex) = 'getDisplayIndex($event)'
+                    (sendStatus) = 'getSentStatus($event)'
+                    (sendAddedLiked) = 'getAddedLiked($event)'
+
+                ></app-recipe-card>
+
+        </mat-grid-tile>
+    </mat-grid-list>
+</div>
+
+<div *ngIf='status == 1 && statusCopy == 3' class="display-board-5" style="background-color: #636363;">
+    <mat-grid-list cols='5' rowHeight="4:4">
+        <mat-grid-tile
+            class="recipeImage"
+            *ngFor = 'let item of recievedData.slice(0, m); let i = index'>
+
+                <app-recipe-card
+                    style="width: 100%;height: 100%;"
+                    [recipe]=item.recipe
+                    [marked]=item.bookmarked
+                    [i] = i
+                    (sendIndex) = 'getDisplayIndex($event)'
+                    (sendStatus) = 'getSentStatus($event)'
+                    (sendAddedLiked) = 'getAddedLiked($event)'
+                ></app-recipe-card>
+
+        </mat-grid-tile>
+    </mat-grid-list>
+    <!-- <div style="width: 100%; display: flex; justify-content: center; margin: 15px;" (click)='loadMore()'>Load More</div> -->
+</div>
+
+
+<div style="width: 100%; display: flex; justify-content: center; color: blue;" (click)='loadMore()'>
+    LOAD MORE
+</div>

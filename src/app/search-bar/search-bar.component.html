@@ -1,0 +1,59 @@
+
+  <div *ngIf='status == 0' class="all" >
+    <div class="midPart">
+        <ngb-carousel style="position: fixed;top:20vh"  #carousel [interval]="2000" [pauseOnHover]="pauseOnHover" [showNavigationArrows]="false" [showNavigationIndicators]="false" (slide)="onSlide($event)">
+          <ng-template ngbSlide *ngFor="let img of images; index as i">
+              <div class="picsum-img-wrapper">
+                <div class="image" [style.background-image]="'url('+img+')'" style="height: 50vh; width: 1000px; "></div>
+              </div>
+          </ng-template>
+        </ngb-carousel>
+      
+        <div  class='icon' style="width: 400px; height: 44vh;z-index:1 ;position: fixed;top:20vh;"></div>
+
+        <div style="height: 100px; width: 800px; border-radius: 50px;background-color: white;margin-bottom: 0px;display: flex; flex-direction:row;justify-content: center;align-items: center;border: lightgray 1px solid;z-index: 2;position: fixed;top:calc(70vh - 50px);">
+          <form class="form" #searchForm="ngForm" (ngSubmit)="onSubmit(searchForm);">
+            <mat-form-field class="example-form-field">
+              <mat-label>Search here</mat-label>
+              <input matInput type="text" name="searchWords" [ngModel]="searchWords" >
+              <button mat-button   *ngIf="value" type="reset" matSuffix mat-icon-button aria-label="Clear" (click)="searchWords=''">
+                <mat-icon>close</mat-icon>
+              </button>
+            </mat-form-field>
+            <button mat-raised-button style="margin: 20px;" color='primary' [disabled]='searchForm.form.status !=="VALID"' style="height: 45px;" (click)="searchWords=''">GET RECIPE</button>
+          </form>
+        </div>
+
+    </div>
+
+
+    <div>"Good Food, Good Mood."</div>
+</div>
+
+
+
+
+
+<div *ngIf='status >= 1' class="top-portion">
+  <div class='icons'>
+    <div style="height: 56px; width: 800px;display: flex;justify-content: space-evenly;position: fixed; left: 400px;top:3px;">
+      <button mat-fab color="primary" class="fab" (click)='showMarked()'>
+        <fa-icon [icon]="starIcon"></fa-icon>
+      </button>
+      <form class="form" #searchForm="ngForm" (ngSubmit)="onSubmit(searchForm);">
+          <div style="height: 56px; width: 400px; border-radius: 28px;background-color: white;display: flex; flex-direction:row;justify-content: center;align-items: center;border: lightgray 1px solid;">
+            <mat-form-field class="example-form-field">
+              <mat-label>Search here</mat-label>
+                <input matInput type="text" name="searchWords" [ngModel]="searchWords" >
+              <button mat-button   *ngIf="value" type="reset" matSuffix mat-icon-button aria-label="Clear" (click)="searchWords=''">
+                <mat-icon>close</mat-icon>
+              </button>
+            </mat-form-field>
+          </div>
+        <button mat-raised-button color='primary' [disabled]='searchForm.form.status !=="VALID"' style="height: 45px;" (click)="searchWords=''">GET RECIPE</button>
+      </form>
+    </div>
+
+
+  </div>
+</div>
