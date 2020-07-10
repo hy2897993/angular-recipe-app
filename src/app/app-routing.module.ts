@@ -10,11 +10,11 @@ import { AboutPageComponent } from './about-page/about-page.component';
 
 const routes: Routes = [
   { path:'', component:MainPageComponent },
-  { path:'user/:username', component:MainPageComponent },
-  { path:'register', component:RegisterPageComponent },
-  { path:'login', component:LoginPageComponent },
-  { path:'account', component:AccountPageComponent ,canActivate: [AuthGuardService]},
-  { path:'about', component:AboutPageComponent },
+  { path:'angular-recipe-app/user/:username', component:MainPageComponent },
+  { path:'angular-recipe-app/register', component:RegisterPageComponent },
+  { path:'angular-recipe-app/login', component:LoginPageComponent },
+  { path:'angular-recipe-app/account', component:AccountPageComponent ,canActivate: [AuthGuardService]},
+  { path:'angular-recipe-app/about', component:AboutPageComponent },
   // { path:'',redirectTo:'/home', pathMatch:'full'}
 ];
 

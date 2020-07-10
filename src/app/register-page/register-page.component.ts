@@ -21,7 +21,7 @@ export class RegisterPageComponent {
       () => {
         // this.router.navigateByUrl("/user/"+this.credentials.username);
         this.sucess = true;
-        setTimeout(()=>this.router.navigateByUrl("/login"), 2000) ;
+        setTimeout(()=>this.router.navigateByUrl("register/login"), 2000) ;
       },
       err => {
         console.error(err);
