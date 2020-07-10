@@ -9,13 +9,13 @@ import { AboutPageComponent } from './about-page/about-page.component';
 
 
 const routes: Routes = [
-  { path:'/', component:MainPageComponent },
-  { path:'/user/:username', component:MainPageComponent },
-  { path:'/register', component:RegisterPageComponent },
-  { path:'/login', component:LoginPageComponent },
-  { path:'/account', component:AccountPageComponent ,canActivate: [AuthGuardService]},
-  { path:'/about', component:AboutPageComponent },
-  { path:'',redirectTo:'/', pathMatch:'full'}
+  { path:'', component:MainPageComponent },
+  { path:'user/:username', component:MainPageComponent },
+  { path:'register', component:RegisterPageComponent },
+  { path:'login', component:LoginPageComponent },
+  { path:'account', component:AccountPageComponent ,canActivate: [AuthGuardService]},
+  { path:'about', component:AboutPageComponent },
+  // { path:'',redirectTo:'/', pathMatch:'full'}
 ];
 
 @NgModule({
