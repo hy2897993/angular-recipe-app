@@ -7,7 +7,7 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarToggle">
           <div class="navbar-nav mr-auto">
-            <a *ngIf="!auth.isLoggedIn()" class="nav-item nav-link" href="/">Home</a>
+            <a *ngIf="!auth.isLoggedIn()" class="nav-item nav-link" href="/angular-recipe-app">Home</a>
             <a *ngIf="auth.isLoggedIn()" class="nav-item nav-link" href="/angular-recipe-app/user/:username">Home</a>
             <a class="nav-item nav-link" href="/angular-recipe-app/about">About</a>
           </div>

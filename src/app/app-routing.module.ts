@@ -9,13 +9,13 @@ import { AboutPageComponent } from './about-page/about-page.component';
 
 
 const routes: Routes = [
-  { path:'', component:MainPageComponent },
+  { path:'angular-recipe-app', component:MainPageComponent },
   { path:'angular-recipe-app/user/:username', component:MainPageComponent },
   { path:'angular-recipe-app/register', component:RegisterPageComponent },
   { path:'angular-recipe-app/login', component:LoginPageComponent },
   { path:'angular-recipe-app/account', component:AccountPageComponent ,canActivate: [AuthGuardService]},
   { path:'angular-recipe-app/about', component:AboutPageComponent },
-  // { path:'',redirectTo:'/home', pathMatch:'full'}
+  { path:'',redirectTo:'angular-recipe-app', pathMatch:'full'}
 ];
 
 @NgModule({
