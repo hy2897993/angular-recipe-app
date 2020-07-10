@@ -7,7 +7,7 @@ import { Recipe } from './recipe'
 export class RecipeService {
 
     constructor(private http: HttpClient) { }
-    private apiUrl = '//www.yingrecipedatabaseapi.xyz/api'
+    private apiUrl = 'https://cors-anywhere.herokuapp.com/http://www.yingrecipedatabaseapi.xyz/api'
 
     addRecipe (recipe: Recipe): Observable<Recipe> {
         const url = `${this.apiUrl}/user/${recipe.username}`

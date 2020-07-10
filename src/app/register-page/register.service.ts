@@ -7,7 +7,7 @@ import { User } from './register'
 @Injectable()
 export class RegisterService {
     constructor(private http: HttpClient) { }
-    private apiUrl= "//www.yingrecipedatabaseapi.xyz/api"
+    private apiUrl= "https://cors-anywhere.herokuapp.com/http://www.yingrecipedatabaseapi.xyz/api"
 
     getUsers (): Observable<User[]> {
         return this.http.get<User[]>(`${this.apiUrl}/all`)
