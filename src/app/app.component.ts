@@ -8,6 +8,6 @@ import { environment } from './../environments/environment'
 export class AppComponent {
 
   title = 'recipe-app';
-  private apiUrl = 'http://www.yingrecipedatabaseapi.xyz/api'
+  private apiUrl = '//www.yingrecipedatabaseapi.xyz/api'
 }
 
