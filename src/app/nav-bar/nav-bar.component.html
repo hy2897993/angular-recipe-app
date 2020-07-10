@@ -7,18 +7,18 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarToggle">
           <div class="navbar-nav mr-auto">
-            <a *ngIf="!auth.isLoggedIn()" class="nav-item nav-link" href="/angular-recipe-app">Home</a>
-            <a *ngIf="auth.isLoggedIn()" class="nav-item nav-link" href="/angular-recipe-app/user/:username">Home</a>
-            <a class="nav-item nav-link" href="/angular-recipe-app/about">About</a>
+            <a *ngIf="!auth.isLoggedIn()" class="nav-item nav-link" href="/">Home</a>
+            <a *ngIf="auth.isLoggedIn()" class="nav-item nav-link" href="/user/:username">Home</a>
+            <a class="nav-item nav-link" href="/about">About</a>
           </div>
         <!-- Navbar Right Side -->
         <div class="navbar-nav">
 <!--          logged in-->
-            <a *ngIf="auth.isLoggedIn()" class="nav-item nav-link" href="/angular-recipe-app/account">Account</a>
+            <a *ngIf="auth.isLoggedIn()" class="nav-item nav-link" href="/account">Account</a>
             <a *ngIf="auth.isLoggedIn()" class="nav-item nav-link" href="/" (click)="auth.logout()">Logout</a>
 <!--          not logged-->
-            <a *ngIf="!auth.isLoggedIn()" class="nav-item nav-link" href="/angular-recipe-app/login">Login</a>
-            <a *ngIf="!auth.isLoggedIn()" class="nav-item nav-link" href="/angular-recipe-app/register">Register</a>
+            <a *ngIf="!auth.isLoggedIn()" class="nav-item nav-link" href="/login">Login</a>
+            <a *ngIf="!auth.isLoggedIn()" class="nav-item nav-link" href="/register">Register</a>
         </div>
     </div>
     </div>
