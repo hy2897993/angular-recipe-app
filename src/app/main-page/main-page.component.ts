@@ -7,6 +7,7 @@ import {Recipe} from "../recipe";
 import {Router} from "@angular/router";
 import set = Reflect.set;
 import {delay, first, tap} from "rxjs/operators";
+import { environment } from 'src/environments/environment';
 
 
 @Component({
@@ -34,6 +35,9 @@ export class MainPageComponent implements OnInit {
   username: string ='';
   markedRecipesFromServer: Recipe[];
   markedRecipes:any;
+  arrLabel:Array<string> = []
+  arrImg:Array<string> = []
+
 
   ngOnInit() {
     console.log('ngOnInit')
@@ -109,25 +113,24 @@ getMarkedRecipesFromServer() {
     this.getIcons()
   }
 
+  
   getIcons = async ()=>{
-    await this.getMarkedRecipes()
+    // await this.getMarkedRecipes()
     const loop = new Promise((resolve, reject)=>{
       if (this.markedRecipes.length > 0) {
           let i = 0
           let j = 0
-          let arrLabel = []
-          let arrImg = []
 
           for (i; i < this.markedRecipes.length; i++) {
-            arrLabel.push(this.markedRecipes[i].label)
-            arrImg.push(this.markedRecipes[i].image)
+            this.arrLabel.push(this.markedRecipes[i].label)
+            this.arrImg.push(this.markedRecipes[i].image)
           }
           // console.log(arrLabel)
           // console.log(arrImg)
 
           for (j; j < this.eventData.length; j++) {
             var temRecievedData = this.eventData
-            if (arrLabel.includes(this.eventData[j].recipe.label)&&arrImg.includes(this.eventData[j].recipe.image)) {
+            if (this.arrLabel.includes(this.eventData[j].recipe.label)&&this.arrImg.includes(this.eventData[j].recipe.image)) {
               temRecievedData[j].bookmarked = true
             } else {
               temRecievedData[j].bookmarked = false
@@ -162,9 +165,6 @@ getMarkedRecipesFromServer() {
     console.log(event.msg)
     this.statusCopy = 0
   }
-
-
-
 
 
   getDisplayIndexToMain(event){
@@ -202,7 +202,19 @@ getMarkedRecipesFromServer() {
 
   getSendAddedLikedToMain(event){
     console.log('main get bookmark change')
+    var x=0
+    var i
+    for(x;x<this.recievedData.length;x++){
+      if(this.recievedData[x].recipe.label == event.recipe.label && this.recievedData[x].recipe.image == event.recipe.image){
+        console.log(x)
+        i = x
+      }
+    }
+    
     if (event.bool){
+      this.recievedData[i].bookmarked = true
+      console.log(this.recievedData[i])
+      this.markedRecipes.push({label:event.recipe.label,image:event.recipe.image})
       this.addlikedRecipe(
         JSON.stringify({label:event.recipe.label,image:event.recipe.image})
         , 'true'
@@ -211,25 +223,39 @@ getMarkedRecipesFromServer() {
 
       // setTimeout(()=>this.getRecipes(),10)
     }else {
+      this.recievedData[i].bookmarked = false
       // console.log(event.recipe)
+      const index = this.markedRecipes.indexOf({label:event.recipe.label,image:event.recipe.image})
+      this.markedRecipes.splice(index, 1)
       this.addlikedRecipe(
         JSON.stringify({label:event.recipe.label,image:event.recipe.image})
         , 'false'
         , this.username
       )
+      
     }
-    // this.getIcons()
-
+    
   }
 
   deleteRecipe(event){
-    // console.log(event.recipe)
+    // console.log(event)
+
+    var x=0
+    var i
+    for(x;x<this.recievedData.length;x++){
+      if(this.recievedData[x].recipe.label == event.recipe.label && this.recievedData[x].recipe.image == event.recipe.image){
+        console.log(x)
+        i = x
+      }
+    }
+
+    this.recievedData[i].bookmarked = false
+    this.markedRecipes.splice(event.i, 1)
     this.addlikedRecipe(
       JSON.stringify({label:event.recipe.label,image:event.recipe.image})
       , 'false'
       , this.username
     )
-    // this.getIcons()
   }
 
 
@@ -237,7 +263,6 @@ getMarkedRecipesFromServer() {
     const newRecipe: Recipe = {recipe, marked, username} as Recipe
     this.recipeService.addRecipe(newRecipe).subscribe(() => {
       console.log('add to server')
-      this.getIcons()
     })
   }
 

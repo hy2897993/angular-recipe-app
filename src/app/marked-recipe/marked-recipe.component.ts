@@ -25,7 +25,7 @@ export class MarkedRecipeComponent implements OnInit {
   }
 
   deleteRecipe(index){
-    this.sendDeleteRecipe.emit({recipe:this.markedRecipes[index]})
+    this.sendDeleteRecipe.emit({i:index, recipe:this.markedRecipes[index]})
   }
   close(){
     this.closeMark.emit({msg:'unmark'})

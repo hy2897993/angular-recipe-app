@@ -18,6 +18,7 @@ export class RecipeCardComponent implements OnInit {
 
 
   starIcon;
+  // tempMark;
 
   @Input() recipe;
   @Input() marked;
@@ -30,7 +31,10 @@ export class RecipeCardComponent implements OnInit {
   constructor(private recipeService: RecipeService, private http: HttpClient, private router: Router, public auth: AuthenticationService) {}
 
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    // this.tempMark = this.marked
+    this.getIcon()
+  }
 
   ngOnChanges() {
     this.getIcon()
@@ -55,10 +59,12 @@ export class RecipeCardComponent implements OnInit {
   bookMarkRecipe(){
     if(!this.marked){
       console.log('mark!')
+      // this.marked = true
       this.sendAddedLiked.emit({i: true, recipe: this.recipe});
       // this.starIcon = fasStar
     }else{
       console.log('unmark!')
+      // this.marked = false
       // this.starIcon = farStar
       this.sendAddedLiked.emit({i: false, recipe: this.recipe});
     }
