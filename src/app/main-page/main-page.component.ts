@@ -35,9 +35,6 @@ export class MainPageComponent implements OnInit {
   username: string ='';
   markedRecipesFromServer: Recipe[];
   markedRecipes:any;
-  arrLabel:Array<string> = []
-  arrImg:Array<string> = []
-
 
   ngOnInit() {
     console.log('ngOnInit')
@@ -120,17 +117,19 @@ getMarkedRecipesFromServer() {
       if (this.markedRecipes.length > 0) {
           let i = 0
           let j = 0
+          let arrImg = []
+          let arrLabel = []
 
           for (i; i < this.markedRecipes.length; i++) {
-            this.arrLabel.push(this.markedRecipes[i].label)
-            this.arrImg.push(this.markedRecipes[i].image)
+            arrLabel.push(this.markedRecipes[i].label)
+            arrImg.push(this.markedRecipes[i].image)
           }
           // console.log(arrLabel)
           // console.log(arrImg)
 
           for (j; j < this.eventData.length; j++) {
             var temRecievedData = this.eventData
-            if (this.arrLabel.includes(this.eventData[j].recipe.label)&&this.arrImg.includes(this.eventData[j].recipe.image)) {
+            if (arrLabel.includes(this.eventData[j].recipe.label)&&arrImg.includes(this.eventData[j].recipe.image)) {
               temRecievedData[j].bookmarked = true
             } else {
               temRecievedData[j].bookmarked = false
@@ -146,6 +145,7 @@ getMarkedRecipesFromServer() {
       this.recievedData = temRecievedData
       // console.log(this.recievedData)
     })
+    console.log('icons update')
 
   }
 
@@ -180,6 +180,8 @@ getMarkedRecipesFromServer() {
     console.log(event);
     this.loadNumber=this.loadNumber+12
     console.log(this.loadNumber);
+    this.getIcons()
+
   }
 
 
@@ -245,11 +247,12 @@ getMarkedRecipesFromServer() {
     for(x;x<this.recievedData.length;x++){
       if(this.recievedData[x].recipe.label == event.recipe.label && this.recievedData[x].recipe.image == event.recipe.image){
         console.log(x)
-        i = x
+        this.recievedData[x].bookmarked = false
+        i = true
       }
     }
 
-    this.recievedData[i].bookmarked = false
+    
     this.markedRecipes.splice(event.i, 1)
     this.addlikedRecipe(
       JSON.stringify({label:event.recipe.label,image:event.recipe.image})
