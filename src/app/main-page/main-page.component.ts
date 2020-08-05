@@ -27,6 +27,7 @@ export class MainPageComponent implements OnInit {
   searchItems: SearchItem[] = new Array<SearchItem>()
   recievedData;
   displayItem;
+  displayIndex;
   toggle:string='';
   status: number = 0;
   statusCopy : number = 0;
@@ -172,6 +173,8 @@ getMarkedRecipesFromServer() {
     this.clickRecipe = false
     console.log(this.clickRecipe)
     this.displayItem = this.recievedData[event.index].recipe;
+    this.displayIndex = event.index;
+    console.log(this.displayIndex)
   }
 
 

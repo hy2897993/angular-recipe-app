@@ -1,8 +1,9 @@
-<div class="all">
+<div class="all" (click) = 'chooseDishes(i)'>
     <div class="recipe"
-    [style.background-image]= "'url('+recipe.image+')'">
+    [style.background-image]= "'url('+recipe.image+')'"
+    [style.border] = 'borderStyle'>
       <div class="header" >
-        <b class="name" style="width: 60%;" (click) = 'chooseDishes(i)'>
+        <b class="name" style="width: 60%;" >
           {{recipe.label}}
         </b>
         <div style="display: flex; flex-direction: row; justify-content: flex-end; width: 30%;">

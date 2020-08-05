@@ -41,7 +41,7 @@
         <fa-icon [icon]="starIcon"></fa-icon>
       </button>
       <form class="form" #searchForm="ngForm" (ngSubmit)="onSubmit(searchForm);">
-          <div style="height: 56px; width: 400px; border-radius: 28px;background-color: white;display: flex; flex-direction:row;justify-content: center;align-items: center;border: lightgray 1px solid;">
+          <div style="height: 56px; width: 400px; border-radius: 28px;background-color: white;display: flex; flex-direction:row;justify-content: center;align-items: center;border: lightgray 1px solid; margin-right: 20px;">
             <mat-form-field class="example-form-field">
               <mat-label>Search here</mat-label>
                 <input matInput type="text" name="searchWords" [ngModel]="searchWords" >

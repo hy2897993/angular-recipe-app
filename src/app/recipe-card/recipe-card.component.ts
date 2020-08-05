@@ -23,9 +23,11 @@ export class RecipeCardComponent implements OnInit {
   @Input() recipe;
   @Input() marked;
   @Input() i;
+  @Input() displayIndex;
   @Output() sendIndex = new EventEmitter();
   @Output() sendAddedLiked = new EventEmitter();
   @Output() sendStatus = new EventEmitter();
+  borderStyle: string;
 
 
   constructor(private recipeService: RecipeService, private http: HttpClient, private router: Router, public auth: AuthenticationService) {}
@@ -38,8 +40,7 @@ export class RecipeCardComponent implements OnInit {
 
   ngOnChanges() {
     this.getIcon()
-    // console.log('starIcon update')
-    // console.log(this.marked)
+
   }
 
   getIcon(){
@@ -48,12 +49,20 @@ export class RecipeCardComponent implements OnInit {
     }else{
       this.starIcon = farStar
     }
+    if(this.displayIndex == this.i){
+      this.borderStyle = 'black 2px solid'
+    }else{
+      this.borderStyle = ' white 5px solid'
+    }
   }
 
   chooseDishes(i:number){
     this.sendIndex.emit({index:i})
     console.log(i)
     this.sendStatus.emit({number:2})
+    // this.borderStyle = "black 2px solid"
+    
+
   }
 
   bookMarkRecipe(){

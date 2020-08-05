@@ -11,6 +11,7 @@ export class DisplayBoardComponent implements OnInit {
 
   
   @Input() recievedData;
+  @Input() displayIndex;
   n:number;
   m:number;
   @Input() status;
