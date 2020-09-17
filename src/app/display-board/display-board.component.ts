@@ -30,8 +30,8 @@ export class DisplayBoardComponent implements OnInit {
   }
 
   ngOnChanges() {
-      this.n = Math.floor(this.recievedData.length/4)*4
-      this.m = Math.floor(this.recievedData.length/5)*5
+      this.n = this.recievedData? Math.floor(this.recievedData.length/4)*4:0;
+      this.m = this.recievedData? Math.floor(this.recievedData.length/5)*5:0;
   }
 
   // getIcon(){

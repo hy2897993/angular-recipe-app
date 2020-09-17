@@ -82,7 +82,14 @@ export class AuthenticationService {
       payload = window.atob(payload)
       return JSON.parse(payload)
     } else {
-      return null
+      return {
+        id: -1,
+        username: 'null',
+        password: 'null',
+        exp: -1,
+        iat: -1,
+        identity: -1
+      }
     }
   }
 

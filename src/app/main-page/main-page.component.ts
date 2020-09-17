@@ -47,12 +47,20 @@ export class MainPageComponent implements OnInit {
   //   console.log(clickRecipe)
   // }
 
+  showModal(){
+    alert('here supposed to have a modal')
+  }
+
 
   async getUser(){
     let v = await this.auth.getUserDetails()
         // let v = this.auth.getUserDetails()
     this.username = v.identity.username
     console.log(this.username)
+    if(this.username == 'null'){
+      console.log('username is null')
+      this.showModal();
+    }
     return Promise.resolve(v.identity.username);
 
   }
@@ -137,6 +145,7 @@ getMarkedRecipesFromServer() {
             }
           }
       }else{
+        this.markedRecipes = [];
         console.log('markedRecipes undefined ')
         var temRecievedData = this.eventData
       }
